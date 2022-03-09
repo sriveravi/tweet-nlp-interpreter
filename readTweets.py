@@ -11,17 +11,8 @@ auth.set_access_token(accessToken, accessTokenSecret)
 api = tweepy.API(auth)
 
 
-# # check basic stats on myself
-# user = api.me()
-# print (user.name)
-
-# # See my timeline
-# timeline = api.home_timeline()
-# for tweet in timeline:
-#     print(f"{tweet.user.name} said {tweet.text}")
-
 friendName = "dog_feelings"
-friend = api.get_user(friendName)
+friend = api.get_user(screen_name=friendName)
 
 
 # print("User details:")
