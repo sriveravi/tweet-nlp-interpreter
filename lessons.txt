@@ -1,0 +1,27 @@
+Token indices sequence length is longer than the specified maximum sequence length for this model (3015 > 1024). Running this sequence through the model will result in indexing errors
+
+
+added max_length=1024 to the tokenizer
+
+
+---
+
+different length sequences
+
+(1, 1024, 768) for one sequence
+(1, 7, 768) for another
+
+so do a mean across the varying axis, 
+
+data_list[0][4].mean(axis=1).shape
+
+gives (1, 768) every time!
+
+---
+
+linear regression on 18 examples gets 50% accuracy and pretty poor performance.
+
+Let's bump up the data to more than 18 examples, then start looking at more flexible models!
+
+---
+
