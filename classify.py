@@ -2,7 +2,7 @@
 Extracting features and training a classifier
 """
 import numpy as np
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 from transformers import BartTokenizer, BartModel
 
@@ -42,8 +42,8 @@ for class_idx, the_file in enumerate(file_list):
 X = np.vstack(features)
 y = np.vstack(labels)
 
-reg = LinearRegression().fit(X, y)
-score = reg.score(X, y, )
+reg = LogisticRegression().fit(X, y)
+score = reg.score(X, y)
 
 # get some metrics
 print( f"R^2 score (1.0 is perfect, const is 0.): {score:.2e}")

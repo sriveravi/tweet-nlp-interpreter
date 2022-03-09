@@ -1,7 +1,7 @@
 Token indices sequence length is longer than the specified maximum sequence length for this model (3015 > 1024). Running this sequence through the model will result in indexing errors
 
 
-added max_length=1024 to the tokenizer
+added max_length=1024 to the tokenizer, or truncation=True
 
 
 ---
