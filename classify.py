@@ -5,6 +5,7 @@ import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 from transformers import BartTokenizer, BartModel
+from sklearn.preprocessing import scale
 
 tokenizer = BartTokenizer.from_pretrained('facebook/bart-base')
 model = BartModel.from_pretrained('facebook/bart-base')
@@ -40,15 +41,17 @@ for class_idx, the_file in enumerate(file_list):
 
 # do some classification
 X = np.vstack(features)
+# X = scale(X)
+
 y = np.vstack(labels)
 
-reg = LogisticRegression().fit(X, y)
+reg = LogisticRegression(random_state=42).fit(X, y.ravel())
 score = reg.score(X, y)
 
 # get some metrics
-print( f"R^2 score (1.0 is perfect, const is 0.): {score:.2e}")
+print( f"Mean accuracy: {score:.2f}")
 
 y_pred = reg.predict(X)
-y_pred = (y_pred>.5).astype(int)
-acc = accuracy_score(y, y_pred)
-print(f"Accuracy: {acc:.2f}")
+# y_pred = (y_pred>.5).astype(int)
+# acc = accuracy_score(y, y_pred)
+# print(f"Accuracy: {acc:.2f}")
