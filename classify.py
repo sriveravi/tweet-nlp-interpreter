@@ -29,7 +29,7 @@ for class_idx, class_obj in enumerate(class_dict_list):
         outputs = model(**inputs)
         last_hidden_states = outputs.last_hidden_state        
         line_features = last_hidden_states.detach().numpy().mean(axis=1)
-                        
+
         class_obj['data'].append(line_features)
 
 
@@ -37,7 +37,7 @@ for class_idx, class_obj in enumerate(class_dict_list):
 features = []
 labels = []
 names = []
-for class_obj in enumerate(class_dict_list):
+for class_idx, class_obj in enumerate(class_dict_list):
     features.append(np.vstack(class_obj['data']))
     labels.append(class_idx*np.ones((len(class_obj['data']),1)))
     names.append(class_obj['file'].split('.')[0])
