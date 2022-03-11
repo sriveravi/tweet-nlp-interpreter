@@ -40,7 +40,7 @@ except:
     print("Error during authentication")
 
 
-for user in user_list[1:]:
+for user in user_list:
 
     # friend = api.get_user(screen_name=user['name'])
     # print("User details:")
@@ -51,14 +51,17 @@ for user in user_list[1:]:
     allTweets = []
 
     num_status = 100
-    for status in Cursor(api.user_timeline, user_id=user['name']).items(num_status):
+    for status in Cursor(api.user_timeline, id=user['name']).items(num_status):
+        # remove breaks and urls
         cleanStat = re.sub(r"http\S+", "", status.text)
+        cleanStat = cleanStat.replace('\n','')
 
         # print(cleanStat)
         allTweets.append(cleanStat)
 
     with open(user['file'], 'w') as f:
-        f.writelines(allTweets)
+        allTweets = [ s + '\n' for s in allTweets ]
+        f.writelines( allTweets)
 
 # print( allTweets)
 
