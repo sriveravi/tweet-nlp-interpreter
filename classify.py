@@ -62,4 +62,4 @@ y_pred = reg.predict(X)
 
 
 
-X_pca = PCA(n_components=2).fit_transform(X)
+# X_pca = PCA(n_components=2).fit_transform(X)

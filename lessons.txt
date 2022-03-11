@@ -25,3 +25,13 @@ Let's bump up the data to more than 18 examples, then start looking at more flex
 
 ---
 
+I cleaned up the data to make sure I was splitting each line properly and had a nice balanced dataset. Then, I doublechecked my data to make sure things were right in terms of loading it, labeling it, etc.
+
+It seems that there is some strange issue, where I initialized a list of empty lists to serve as a data structure for aggregating my feature vectors. But as I looped through each class, it was appending to BOTH lists instead of the corresponding class! So I had duplicate data for each class.
+
+I have never seen that before. I fixed it by using a dictionary structure to aggregate each class separately. it's nice because I can scale this up easily to multiple classes without making any other code changes than adding a new item to the dict.
+
+now, perfect accuracy on 100 tweets for each of the 2 classes.
+
+---
+
