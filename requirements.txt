@@ -1,2 +1,4 @@
 transformers
 tweepy
+shap
+scikit-learn
